@@ -16,6 +16,10 @@ $propHash = @{
 #create a custom object
 $obj = New-Object -TypeName PSObject -Property $propHash
 
+#what does it look like?
+$obj
+$obj | Get-Member
+
 #insert a type name
 $obj.psobject.TypeNames.Insert(0,"myFileObject")
 
@@ -23,10 +27,10 @@ $obj.psobject.TypeNames.Insert(0,"myFileObject")
 $obj | Add-Member -MemberType ScriptMethod -Name GetCreatedAge -Value {(Get-Date) - $this.Created}
 $obj | Add-Member -MemberType ScriptMethod -Name GetModifiedAge -Value {(Get-Date) - $this.Modified}
 
-#look at the object
+#look at the object now
 $obj
 $obj | Get-Member
+
 #invoke a custom method
 $obj.GetCreatedAge()
-
 

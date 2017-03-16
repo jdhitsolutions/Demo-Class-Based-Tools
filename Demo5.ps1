@@ -34,7 +34,6 @@ Function Get-FileClass {
     "bmp|jpg|png|tif|gif|jpeg"         { [fileclass]::Graphic }
     Default                            { [fileclass]::File }
     }
-
 }
 
 #these functions won't be exposed so I can use non-standard names
@@ -51,7 +50,6 @@ Function ZipFile {
     Catch {
         Throw $_
     }
-
 }
 
 Function Get-FType {
@@ -67,7 +65,6 @@ Function Get-FType {
         else {
             "Unassociated"
         }
-
 }
 
 Class MyFileObject {
