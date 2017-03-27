@@ -66,7 +66,7 @@ Class MyFileObject {
 
     [string]GetFileType() {
         #call the private helper function
-        $r = GetFtype -extension $this.Extension
+        $r = Get-Ftype -extension $this.Extension
         return $r
     }
 
@@ -323,9 +323,9 @@ Export-ModuleMember -Function New-MyFileObject,Update-MyFileObject,Compress-MyFi
 
 <#
 Next steps:
-Add custom format extensions
-Add custom type extensions
-help documentation
-add a manifest
-Separate functions from class definition into different files
+ Add custom format extensions
+ Add custom type extensions
+ help documentation
+ add a manifest - nothing to declare for the class
+ Separate functions from class definition into different files
 #>

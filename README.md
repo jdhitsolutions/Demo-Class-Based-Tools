@@ -5,4 +5,7 @@
 * The module is not intended for production use as currently written and is not necessarily a complete example of best 
 practices.
 
+
 These example files have *nothing* to do with creating a DSC class-based resource.
+
+_Last updated: 27 March 2017_

@@ -16,6 +16,7 @@ enum FileClass {
   Graphic
   Executable
   System
+  Media
   File
 }
 
@@ -32,6 +33,7 @@ Function Get-FileClass {
     "exe|cmd|application"              { [fileclass]::Executable }
     "sys|dll"                          { [fileclass]::System }
     "bmp|jpg|png|tif|gif|jpeg"         { [fileclass]::Graphic }
+    "mp3|wav|mp4|avi|wmf"              {[FileClass]::Media}
     Default                            { [fileclass]::File }
     }
 }
@@ -110,7 +112,7 @@ Class MyFileObject {
 
     #These were moved to external functions
     [string]GetFileType() {
-        $r = GetFtype -extension $this.Extension
+        $r = Get-Ftype -extension $this.Extension
         return $r
     }
     
@@ -153,10 +155,11 @@ Class MyFileObject {
     #endregion
 }
 
+cls
 Return
 
 $f = New-Object MyFileObject -ArgumentList .\file.txt
-$f | get-member
+$f | Get-Member
 $f.zip()
 $f.GetFileType()
 

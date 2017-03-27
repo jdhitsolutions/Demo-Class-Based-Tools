@@ -16,6 +16,7 @@ Class MyFileObject {
 
 }
 
+#load the class into your session
 Return
 #WALKTHROUGH
 

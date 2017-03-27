@@ -45,6 +45,7 @@ Class MyFileObject {
 }
 
 Return
+cls
 
 [myfileobject]::new.overloadDefinitions
 

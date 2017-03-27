@@ -15,6 +15,7 @@ enum FileClass {
   Graphic
   Executable
   System
+  Media
   File
 }
 
@@ -31,6 +32,7 @@ Param([string]$Extension)
     "exe|cmd|application"              { [fileclass]::Executable }
     "sys|dll"                          { [fileclass]::System }
     "bmp|jpg|png|tif|gif|jpeg"         { [fileclass]::Graphic }
+    "mp3|wav|mp4|avi|wmf"              {[FileClass]::Media}
     Default                            { [fileclass]::File }
     }
 
@@ -50,8 +52,6 @@ Class MyFileObject {
     [fileclass]$FileClass    #<----- Added
     hidden[string]$Owner     #<----- Added
     hidden[string]$Basename  #<----- Added
-
-
     #endregion
 
     #region Methods 
@@ -76,7 +76,7 @@ Class MyFileObject {
      }  
     } 
 
-    #vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    #vvvvvvvvvvvvvvvvvvvvvvvvvv---NEW---vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
     [string]GetFileType() {
         $result = cmd /c assoc ".$($this.Extension)"
         if ($result -match "=") {
@@ -98,7 +98,7 @@ Class MyFileObject {
 
     }
 
-    #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     #endregion
 
     #region Constructors
@@ -126,21 +126,27 @@ Class MyFileObject {
 
 }
 
+cls
 Return
 
 #demo this version
-$f = New-Object MyFileObject -ArgumentList .\Demo4.ps1
+
+$f = New-Object MyFileObject -ArgumentList .\file.txt
 $f | get-member
-#can use it if you know it
+
+#can use it if you know it on hidden properties
 $f.owner
 
-$f | get-member -Force
+#display it
+$f | get-member -Force -MemberType Properties
 
+#try the new methods
 $f.GetFileType()
 
 $f.zip()
-dir
+dir *.zip
 
-$f.zip("c:\work")
-dir c:\work\*.zip
+#zip to a folder
+$f.zip("c:\")
+dir C:\*.zip
 

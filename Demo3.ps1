@@ -70,16 +70,21 @@ Class MyFileObject {
 
 }
 
+cls
 Return
 
 #demo this version
-$f = New-Object MyFileObject -ArgumentList .\Demo1.ps1
+
+$f = New-Object MyFileObject -ArgumentList .\file.txt
 $f
 $f | get-member
 $f.GetCreatedAge()
 $f.GetModifiedAge()
 $f.GetModifiedAge().ToString()
 
-#modify demo1.ps1
-$f.Refresh()
+# modify file.txt
+add-content -Value "this is something else" -Path .\file.txt
 
+$f.Refresh()
+$f
+$f.GetModifiedAge().ToString()
