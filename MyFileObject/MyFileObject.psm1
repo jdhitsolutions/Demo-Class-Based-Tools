@@ -79,7 +79,7 @@ Class MyFileObject {
         ZipFile -Path $this.Path -Destination $destination 
     }
 
-    [void]Zip([string]$DestinationFolder) {
+    hidden[void]Zip([string]$DestinationFolder) {
         $destination = Join-Path -Path $DestinationFolder -ChildPath "$($this.basename).zip"
         ZipFile -Path $this.Path -Destination $destination 
 
@@ -89,6 +89,7 @@ Class MyFileObject {
 
     #region Constructors
     MyFileObject([string]$FilePath) {
+
      If (Test-Path -Path $Filepath) {
         write-Verbose "Getting file information from $filepath"
         $item = Get-Item -Path $Filepath

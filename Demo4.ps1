@@ -32,7 +32,7 @@ Param([string]$Extension)
     "exe|cmd|application"              { [fileclass]::Executable }
     "sys|dll"                          { [fileclass]::System }
     "bmp|jpg|png|tif|gif|jpeg"         { [fileclass]::Graphic }
-    "mp3|wav|mp4|avi|wmf"              {[FileClass]::Media}
+    "mp3|wav|mp4|avi|wmf"              { [fileClass]::Media }
     Default                            { [fileclass]::File }
     }
 
@@ -103,6 +103,7 @@ Class MyFileObject {
 
     #region Constructors
     MyFileObject([string]$FilePath) {
+
      If (Test-Path -Path $Filepath) {
         $item = Get-Item -Path $Filepath
         $this.path = $item.fullname

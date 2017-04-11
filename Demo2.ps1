@@ -7,6 +7,7 @@
 Class MyFileObject {
 
     #region Properties
+
     [ValidateNotNullorEmpty()]
     [string]$Path
 
@@ -21,6 +22,7 @@ Class MyFileObject {
 
 
     #region Constructors
+
     MyFileObject([string]$FilePath) {
      If (Test-Path -Path $Filepath) {
         $item = Get-Item -Path $Filepath
@@ -39,12 +41,13 @@ Class MyFileObject {
      }
 
     }
-
-
+    
     #endregion
 }
 
 Return
+
+#walkthrough demo
 cls
 
 [myfileobject]::new.overloadDefinitions

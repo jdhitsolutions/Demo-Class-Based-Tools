@@ -18,8 +18,10 @@ Class MyFileObject {
 
 #load the class into your session
 Return
+
 #WALKTHROUGH
 
+#different ways to create a new instance of the object
 New-Object MyFileObject
 
 [myfileobject]::new()

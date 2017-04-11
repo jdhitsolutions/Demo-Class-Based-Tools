@@ -47,7 +47,7 @@ Function ZipFile {
     ) 
 
     Try {
-    Compress-Archive -Path $Path -DestinationPath $Destination -CompressionLevel Optimal -ErrorAction Stop
+        Compress-Archive -Path $Path -DestinationPath $Destination -CompressionLevel Optimal -ErrorAction Stop
     }
     Catch {
         Throw $_
@@ -83,8 +83,7 @@ Class MyFileObject {
     [fileclass]$FileClass    
     hidden[string]$Owner     
     hidden[string]$Basename  
-
-
+    
     #endregion
 
     #region Methods 
@@ -122,7 +121,7 @@ Class MyFileObject {
         ZipFile -Path $this.Path -Destination $destination 
     }
 
-    [void]Zip([string]$DestinationFolder) {
+    hidden[void]Zip([string]$DestinationFolder) {
         $destination = Join-Path -Path $DestinationFolder -ChildPath "$($this.basename).zip"
         ZipFile -Path $this.Path -Destination $destination 
 
@@ -132,6 +131,7 @@ Class MyFileObject {
 
     #region Constructors
     MyFileObject([string]$FilePath) {
+
      If (Test-Path -Path $Filepath) {
         $item = Get-Item -Path $Filepath
         $this.path = $item.fullname
@@ -157,6 +157,8 @@ Class MyFileObject {
 
 cls
 Return
+
+#Walkthrough
 
 $f = New-Object MyFileObject -ArgumentList .\file.txt
 $f | Get-Member
