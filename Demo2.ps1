@@ -10,7 +10,6 @@ Class MyFileObject {
 
     [ValidateNotNullorEmpty()]
     [string]$Path
-
     [string]$Name
     [string]$Extension
     [string]$Directory

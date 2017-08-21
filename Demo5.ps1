@@ -27,14 +27,14 @@ Function Get-FileClass {
 
     Switch -Regex ($Extension) {
 
-    "bat|ps1|psm1|psd1|ps1xml|vbs|wpf" { [fileclass]::Script }
-    "txt|log|xml"                      { [fileclass]::Text }
-    "doc|xls|ppt|pdf"                  { [fileclass]::Office }
-    "exe|cmd|application"              { [fileclass]::Executable }
-    "sys|dll"                          { [fileclass]::System }
-    "bmp|jpg|png|tif|gif|jpeg"         { [fileclass]::Graphic }
-    "mp3|wav|mp4|avi|wmf"              {[FileClass]::Media}
-    Default                            { [fileclass]::File }
+    "bat|ps1|psm1|psd1|ps1xml|vbs|wpf"  { [fileclass]::Script }
+    "txt|log|xml"                       { [fileclass]::Text }
+    "do[ct](x)?|xls(x)?|p[po]t(x)?|pdf" { [fileclass]::Office }
+    "exe|cmd|application"               { [fileclass]::Executable }
+    "sys|dll"                           { [fileclass]::System }
+    "bmp|jpg|png|tif|gif|jpeg"          { [fileclass]::Graphic }
+    "mp3|wav|mp4|avi|wmf"               {[FileClass]::Media}
+    Default                             { [fileclass]::File }
     }
 }
 
