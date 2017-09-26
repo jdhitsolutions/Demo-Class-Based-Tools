@@ -48,4 +48,4 @@ $ship.FireTorpedo()
 $ship.FireTorpedo(3)
 $ship.QuantumTorpedoCount
 
-#have more fun with files at https://github.com/jdhitsolutions/myStarShip
+#have more fun with starships at https://github.com/jdhitsolutions/myStarShip
