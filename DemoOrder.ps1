@@ -5,6 +5,7 @@ return "This is a walk-through demo file not a script to run."
 #change folder to demo root
 # set-location 'C:\scripts\Demo Class-Based Tools'
 
+cls
 psedit .\legacy.ps1
 psedit .\classbasics.ps1
 psedit .\Demo1.ps1

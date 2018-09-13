@@ -32,5 +32,5 @@ $obj
 $obj | Get-Member
 
 #invoke a custom method
-$obj.GetCreatedAge()
+$obj.GetCreatedAge().tostring()
 

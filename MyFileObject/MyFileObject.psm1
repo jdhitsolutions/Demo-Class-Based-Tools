@@ -66,7 +66,7 @@ Class MyFileObject {
 
     [string]GetFileType() {
         #call the private helper function
-        $r = Get-Ftype -extension $this.Extension
+        $r = GetFtype -extension $this.Extension
         return $r
     }
 
@@ -318,9 +318,50 @@ End {
 } #end
 }
 
+
+Function Get-MyFileObject {
+[cmdletbinding(DefaultParameterSetName= "path")]
+Param(
+[Parameter(Position = 0, Mandatory,ParameterSetName="path")]
+[ValidateScript({Test-Path $_})]
+[string]$Path,
+[Parameter(ParameterSetName="path")]
+[Switch]$Recurse,
+
+[Parameter(Position = 1, Mandatory,ParameterSetName="file")]
+[ValidateNotNullOrEmpty()]
+[string]$FileName
+)
+
+Begin {
+   Write-Verbose "Starting $($MyInvocation.MyCommand)"
+
+} #begin
+
+Process {
+ If ($PSCmdlet.ParameterSetName -eq 'path') {
+     Write-Verbose "Getting files from $Path"
+     Get-Childitem @PSBoundParameters -file | New-MyFileObject
+ }
+ else {
+    Write-Verbose "Getting file $filepath"
+    Get-ChildItem -path $filename | New-MyFileObject 
+ }
+}
+
+
+End {
+   Write-Verbose "Ending $($MyInvocation.MyCommand)"
+
+} #end
+
+}
+
 #endregion
 
-Export-ModuleMember -Function New-MyFileObject,Update-MyFileObject,Compress-MyFileObject
+
+
+Export-ModuleMember -Function Get-MyFileObject,New-MyFileObject,Update-MyFileObject,Compress-MyFileObject
 
 <#
 Next steps:
